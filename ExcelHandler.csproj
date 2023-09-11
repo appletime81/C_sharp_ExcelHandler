@@ -9,9 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="6.2.9" />
-    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
-    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
-    <PackageReference Include="IronXL.Excel" Version="2023.9.29" />
   </ItemGroup>
 
 </Project>
