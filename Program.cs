@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using static ReadExcel;
 
 
 // 遍歷某個路徑底下所有資料夾及子資料夾，並找出所有excel檔案
-namespace ExcelConsoleApp // <-- 添加此命名空間宣告
+namespace ExcelHandler // <-- 添加此命名空間宣告
 {
     // 遍歷某個路徑底下所有資料夾及子資料夾，並找出所有excel檔案
     public static class Program
@@ -21,7 +20,7 @@ namespace ExcelConsoleApp // <-- 添加此命名空間宣告
             
             if (assemblyDirectory != null)
             {
-                string fullPath = System.IO.Path.Combine(assemblyDirectory, relativePath);
+                var fullPath = System.IO.Path.Combine(assemblyDirectory, relativePath);
                 var allExcelFiles = FindAllExcel.FindAllExcelFiles(fullPath);
                 foreach (var file in allExcelFiles)
                 {
