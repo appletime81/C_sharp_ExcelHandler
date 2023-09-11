@@ -15,27 +15,21 @@ namespace ExcelConsoleApp // <-- 添加此命名空間宣告
     {
         private static void Main(string[] args)
         {
-            string? assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string? assemblyDirectory = System.IO.Path.GetDirectoryName(assemblyLocation);
-            string relativePath = "mams";
-            // if not null
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyDirectory = System.IO.Path.GetDirectoryName(assemblyLocation);
+            const string relativePath = "mams";
+            
             if (assemblyDirectory != null)
             {
                 string fullPath = System.IO.Path.Combine(assemblyDirectory, relativePath);
-                // Console.WriteLine("-----------------------------");
-                // Console.WriteLine(fullPath);
-                // Console.WriteLine("-----------------------------");
-                // 呼叫FindAllExcelFiles方法
                 var allExcelFiles = FindAllExcel.FindAllExcelFiles(fullPath);
                 foreach (var file in allExcelFiles)
                 {
-                    Console.WriteLine(file);
-                    // ReadExcel.ReadExcelFile(file);
+                    // Console.WriteLine(file);
                 }
-                Console.WriteLine("-------------------------------------------------------------");
+                
                 foreach (var file in allExcelFiles)
                 {
-                    // Console.WriteLine(file);
                     ReadExcel.ReadExcelFile(file);
                 }
             }

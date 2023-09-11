@@ -6,7 +6,9 @@ public static class ReadExcel
 {
     public static void ReadExcelFile(string path)
     {
+        Console.WriteLine("-------------------------------------------------------------");
         Console.WriteLine(path);
+        Console.WriteLine("-------------------------------------------------------------");
         FileInfo file = new FileInfo(path);
 
         if (!file.Exists)
