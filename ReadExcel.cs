@@ -13,15 +13,17 @@ namespace ExcelHandler
             Console.WriteLine("-------------------------------------------------------------");
             var file = new FileInfo(path);
 
+            // 建立一個變數存放excel內容
+            var excelContent = new List<string>();
+
             if (!file.Exists)
             {
                 Console.WriteLine($"Error: File not found at {path}");
                 return;
             }
 
-            using var package = new ExcelPackage(file);
-
             // 取得第一個工作表
+            using var package = new ExcelPackage(file);
             var worksheet = package.Workbook.Worksheets[0];
 
             var rowCount = worksheet.Dimension.Rows;
