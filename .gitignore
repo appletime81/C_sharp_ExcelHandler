@@ -87,3 +87,5 @@ PublishScripts/obj/
 *.excludecache
 *.excludesettings
 *.sln.DotSettings.user
+./bin
+./obj
