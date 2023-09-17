@@ -17,25 +17,27 @@ namespace ExcelHandler // <-- 添加此命名空間宣告
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var assemblyDirectory = System.IO.Path.GetDirectoryName(assemblyLocation);
             const string relativePath = "mams";
-            
-            if (assemblyDirectory != null)
+
+            // glossary.xlsx path
+            if (string.IsNullOrEmpty(assemblyDirectory))
             {
-                var fullPath = System.IO.Path.Combine(assemblyDirectory, relativePath);
-                var allExcelFiles = FindAllExcel.FindAllExcelFiles(fullPath);
-                foreach (var file in allExcelFiles)
-                {
-                    // Console.WriteLine(file);
-                }
-                
-                foreach (var file in allExcelFiles)
-                {
-                    ReadExcel.ReadExcelFile(file);
-                }
+                throw new InvalidOperationException("Assembly directory is null or empty.");
             }
-            else
+
+            var glossaryPath = System.IO.Path.Combine(assemblyDirectory, "glossary.xlsx");
+            var fullPath = System.IO.Path.Combine(assemblyDirectory, relativePath);
+            var allExcelFiles = FindAllExcel.FindAllExcelFiles(fullPath);
+            foreach (var file in allExcelFiles)
             {
-                Console.WriteLine("assemblyDirectory is null");
+                Console.WriteLine("-------------------------------------------------------------");
+                Console.WriteLine(file);
+                ExcelProcessor.AppendExcelWithoutDuplicates(file, glossaryPath);
             }
+
+            // foreach (var file in allExcelFiles)
+            // {
+            //     ReadExcel.ReadExcelFile(file);
+            // }
         }
     }
 }
